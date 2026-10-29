@@ -1,0 +1,31 @@
+{
+  "passed": 22,
+  "tests": [
+    "panel_served",
+    "reject_unauthenticated",
+    "reject_cross_origin_simple_request",
+    "fragmented_reply_reassembled",
+    "redacted_serial_and_session",
+    "legacy_protocol_version_zero",
+    "unsupported_protocol_version_rejected",
+    "authenticated_extension_diagnostics",
+    "native_white_light_command",
+    "invalid_light_mode_blocked",
+    "account_config_blocked",
+    "network_writes_blocked",
+    "white_light_verified",
+    "record_mode_verified",
+    "schedule_verified",
+    "invalid_schedule_blocked",
+    "ptz_start_followed_by_stop",
+    "invalid_preset_blocked",
+    "native_archive_query",
+    "invalid_archive_range_blocked",
+    "oversized_request_rejected",
+    "server_survives_invalid_request"
+  ],
+  "hardware_tested": false,
+  "binary": "localmod-web.arm",
+  "readonly_root_policy_checks": 11,
+  "source_only_public_build": true
+}

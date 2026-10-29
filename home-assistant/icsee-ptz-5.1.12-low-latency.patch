@@ -1,0 +1,39 @@
+--- a/custom_components/icsee_ptz/camera.py
++++ b/custom_components/icsee_ptz/camera.py
+@@ -20,7 +20,7 @@
+ 
+ PARALLEL_UPDATES = 0
+ 
+-STREAMS = (("main", 0), ("sub", 1))  # (translation/unique key, stream number)
++STREAMS = (("main", 0), ("sub", 1), ("live", 0))  # (translation/unique key, stream number)
+ 
+ 
+ def _rtsp(coordinator: ICSeeCoordinator) -> dict[str, Any] | None:
+@@ -71,6 +71,10 @@
+         ICSeeEntity.__init__(self, coordinator, f"camera_{stream}_{channel}", channel)
+         Camera.__init__(self)
+         self._attr_translation_key = f"{stream}_stream"
++        self._low_latency = stream == "live"
++        if self._low_latency:
++            self._attr_translation_key = None
++            self._attr_name = "Ao vivo baixa latÃªncia"
+         self._subtype = subtype
+         self._rtsp_on = self._rtsp_enabled()
+ 
+@@ -113,11 +117,15 @@
+         port = (rtsp.get("Server") or {}).get("Port") or 554
+         # XM RTSP path; channels start at 1 here. The camera does not decode
+         # %XX here, so the login goes in as is (#73)
+-        return (
++        source = (
+             f"rtsp://{device.host}:{port}/user={device.username}"
+             f"&password={device.password}"
+             f"&channel={self.channel + 1}&stream={self._subtype}.sdp?real_stream"
+         )
++        if self._low_latency:
++            # Conversao sob demanda no HA; nao modifica o fluxo gravado no SD.
++            return "ffmpeg:" + source + "#video=h264#audio=opus"
++        return source
+ 
+     async def async_camera_image(
+         self, width: int | None = None, height: int | None = None

@@ -1,0 +1,66 @@
+# Merge this card into your existing dashboard; replace the camera entity ID.
+type: vertical-stack
+cards:
+  - type: picture-entity
+    entity: camera.replace_with_low_latency_camera
+    camera_view: live
+    show_name: false
+    show_state: false
+    aspect_ratio: '16:9'
+  - type: grid
+    columns: 4
+    square: false
+    cards:
+      - type: button
+        name: Cima
+        icon: mdi:arrow-up
+        tap_action:
+          action: perform-action
+          perform_action: script.camera_local_move
+          data: {direction: DirectionUp}
+      - type: button
+        name: Baixo
+        icon: mdi:arrow-down
+        tap_action:
+          action: perform-action
+          perform_action: script.camera_local_move
+          data: {direction: DirectionDown}
+      - type: button
+        name: Esquerda
+        icon: mdi:arrow-left
+        tap_action:
+          action: perform-action
+          perform_action: script.camera_local_move
+          data: {direction: DirectionLeft}
+      - type: button
+        name: Direita
+        icon: mdi:arrow-right
+        tap_action:
+          action: perform-action
+          perform_action: script.camera_local_move
+          data: {direction: DirectionRight}
+  - type: grid
+    columns: 3
+    square: false
+    cards:
+      - type: button
+        name: Acender
+        icon: mdi:lightbulb-on
+        tap_action:
+          action: perform-action
+          perform_action: script.camera_local_light
+          data: {mode: KeepOpen}
+      - type: button
+        name: Apagar
+        icon: mdi:lightbulb-off
+        tap_action:
+          action: perform-action
+          perform_action: script.camera_local_light
+          data: {mode: Close}
+      - type: button
+        name: Por movimento
+        icon: mdi:motion-sensor
+        tap_action:
+          action: perform-action
+          perform_action: script.camera_local_light
+          data: {mode: Intelligent}

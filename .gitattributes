@@ -1,0 +1,5 @@
+* text=auto eol=lf
+# Preserve upstream notices and unified-diff context exactly.
+*.patch whitespace=-blank-at-eol
+licenses/* whitespace=-blank-at-eol
+vendor/* whitespace=-blank-at-eol

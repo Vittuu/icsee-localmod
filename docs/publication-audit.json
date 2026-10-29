@@ -1,0 +1,5 @@
+{
+  "checked_files": 37,
+  "findings": [],
+  "excluded": "Private firmware/images, device credentials/keys, Wi-Fi/account databases, raw logs, recordings and screenshots. Allowlisted source-only export."
+}
