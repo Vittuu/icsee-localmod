@@ -2,7 +2,7 @@
 
 Experimental, source-only project for **one tested Xiongmai XM530V200 / IPG-X2-WQ-BL camera**. Keeps the stock firmware, sensor/Wi-Fi/PTZ/audio/LED drivers and native SD recorder, while adding a small local web API and key-only SSH. **This is not OpenIPC and is not a universal firmware image.**
 
-Development and documentation used AI assistance. Hardware observations below were checked on the owner's physical camera; portability has not been established.
+Analysis used [REA + Ghidra](docs/REA-GHIDRA-WORKFLOW.md) with Codex assistance. Development and documentation used AI assistance. Hardware observations below were checked on the owner's physical camera; portability has not been established.
 
 ## What worked on the tested unit
 
