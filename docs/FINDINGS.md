@@ -1,5 +1,7 @@
 # Findings and development path
 
+This is an owner-authorized, AI-assisted engineering report, checked on one physical unit. It documents interoperability experiments with existing native protocols, not a claim to have invented DVRIP or discovered a new exploit. Upstream protocol/integration work is credited in the repository README. No firmware images or private device data are distributed.
+
 ## Tested platform
 
 - SoC reported by stock system: XM530V200.
@@ -36,6 +38,6 @@ No bootloader, kernel or root filesystem was flashed. No public images or generi
 
 ## Home Assistant video
 
-Native maximum video remained H.265, 2304 × 1296, 12 fps. The UI exposed only H.265 for the secondary stream on this firmware. A separate viewing entity therefore uses go2rtc's supported `ffmpeg:…#video=h264#audio=opus` source. go2rtc's H.264 template tunes for low latency. Re-encoding takes server CPU and can lose detail; recording on SD is unaffected.
+Native maximum video remained H.265, 2304 Ã— 1296, 12 fps. The UI exposed only H.265 for the secondary stream on this firmware. A separate viewing entity therefore uses go2rtc's supported `ffmpeg:â€¦#video=h264#audio=opus` source. go2rtc's H.264 template tunes for low latency. Re-encoding takes server CPU and can lose detail; recording on SD is unaffected.
 
-The HA-managed go2rtc rejected source strings containing literal spaces. Percent-encoding raw arguments did not make them valid FFmpeg arguments in this test. The final configuration uses the supported standard template, not a bypass of that restriction. H.264/Opus transmission and moving 2304 × 1296 video via WebRTC were confirmed. Exact end-to-end latency reduction remains unmeasured.
+The HA-managed go2rtc rejected source strings containing literal spaces. Percent-encoding raw arguments did not make them valid FFmpeg arguments in this test. The final configuration uses the supported standard template, not a bypass of that restriction. H.264/Opus transmission and moving 2304 Ã— 1296 video via WebRTC were confirmed. Exact end-to-end latency reduction remains unmeasured.
