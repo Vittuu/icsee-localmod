@@ -1,4 +1,11 @@
-# Local API
+# LocalMod HTTP API
+
+This page documents the HTTP API added by LocalMod on TCP port 18080. It is
+separate from the camera's stock DVRIP service on TCP port 34567. For the
+tested native command IDs and fields, see
+[Useful protocol details](FINDINGS.md#useful-protocol-details).
+The HTTP routes below are translated into native requests by the
+[LocalMod bridge](../src/localmod-web.c); they are not stock DVRIP endpoints.
 
 Base URL: `http://CAMERA_LAN_IP:18080`. POST JSON, native HTTP Basic credentials, `Content-Type: application/json`, `X-Localmod: 1`. Controls require the `--enable-controls` startup flag. The executable defaults to loopback unless `--bind` is supplied.
 
