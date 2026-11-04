@@ -24,6 +24,10 @@ OpenIPC support for a SoC does not establish complete support for that camera's 
 - SD file listings use 1440 / `OPFileQuery`. A `.h264` suffix did **not** imply H.264 video: a retrieved recording decoded as HEVC/H.265.
 - The native recorder uses WFS. Generic FAT32 assumptions broke extension persistence during recording experiments; persistent boot was moved to internal storage.
 
+The [LocalMod HTTP API](API.md) exposes these operations through a separate
+service on TCP port 18080. Its `/api/*` routes belong to the extension, not
+to the stock DVRIP service on TCP port 34567.
+
 ## Boot / SSH pitfalls
 
 The board's root was immutable cramfs with factory UID 1108. Dropbear ownership checks needed a narrow exception for **only `/`, only that factory UID, only cramfs, only a read-only root**; key files and mutable parent directories remain checked. This exception is hardware-specific, not a reason to disable ownership checks globally.
